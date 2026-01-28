@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Inventaris Terpadu v3.0</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="inisialisasi()">
+    <div class="app-wrapper">
+      <aside class="panel-left">
+        <div class="brand">🚀 <span>MOBMOBDev</span></div>
+
+        <div class="section-card">
+          <h3>Form Peminjaman</h3>
+          <label>Pilih Barang</label>
+          <select id="selectBarang">
+            <option value="">-- Pilih Inventaris --</option>
+          </select>
+
+          <label>Peminjam</label>
+          <input type="text" id="inputPeminjam" placeholder="Nama Lengkap" />
+
+          <button onclick="prosesTambah()" class="btn-main">Simpan Data</button>
+        </div>
+
+        <div class="stock-status">
+          <h3>Status Stok Tersedia</h3>
+          <ul id="stokList"></ul>
+        </div>
+      </aside>
+
+      <main class="panel-right">
+        <header class="header-main">
+          <input
+            type="text"
+            id="pencarian"
+            onkeyup="filterTabel()"
+            placeholder="Cari Riwayat..."
+          />
+          <div class="btn-group">
+            <button onclick="unduhPDF()" class="btn-exp pdf">Cetak PDF</button>
+            <button onclick="unduhExcel()" class="btn-exp excel">Excel</button>
+          </div>
+        </header>
+
+        <div class="table-container">
+          <table id="tabelLog">
+            <thead>
+              <tr>
+                <th>Barang</th>
+                <th>Peminjam</th>
+                <th>Waktu Pinjam</th>
+                <th>Waktu Kembali</th>
+                <th>Durasi</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="badanTabel"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
